@@ -2,18 +2,19 @@
   "name": "server",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "client:dev": "vite",
-    "server:dev": "nodemon src/server.ts",
-    "server:build": "esbuild ./src/server.ts --bundle --outdir=dist --platform=node",
+    "server:dev": "nodemon src/server",
+    "server:build": "esbuild ./src/server.ts --minify --bundle --format=cjs --outfile=dist/server.cjs --platform=node",
     "client:build": "vite build",
     "build": "npm run server:build && npm run client:build",
     "serve": "vite preview",
     "prepare": "husky install",
     "test": "prettier --check . && eslint . && stylelint \"**/*.css\"",
-    "start": "node dist/server",
+    "start": "node dist/server.cjs",
     "lint": "prettier -w ."
   },
   "dependencies": {
