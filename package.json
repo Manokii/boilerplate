@@ -13,7 +13,8 @@
     "serve": "vite preview",
     "prepare": "husky install",
     "test": "prettier --check . && eslint . && stylelint \"**/*.css\"",
-    "start": "node dist/server"
+    "start": "node dist/server",
+    "lint": "prettier -w ."
   },
   "dependencies": {
     "dotenv": "16.0.3",
